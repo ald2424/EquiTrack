@@ -1,6 +1,8 @@
 const express = require("express");
 const connectDB = require("./config/database");
 
+const horseRoutes = require("./routes/horses");
+
 // Load environment variables
 require("dotenv").config({ path: "./config/.env" });
 
@@ -11,6 +13,8 @@ const app = express();
 
 // Middleware to parse JSON bodies
 app.use(express.json());
+
+app.use("/api/horses", horseRoutes); 
 
 // Basic Route for testing
 app.get("/", (req, res) => res.send("Hello World!"));
